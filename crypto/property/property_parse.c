@@ -24,7 +24,9 @@ DEFINE_STACK_OF(OSSL_PROPERTY_DEFINITION)
 
 static const char *skip_space(const char *s)
 {
-    while (ossl_isspace(*s))
+    if (s == NULL)
+        return NULL;
+    while (*s != '\0' && ossl_isspace(*s))
         s++;
     return s;
 }

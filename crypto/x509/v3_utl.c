@@ -309,6 +309,9 @@ STACK_OF(CONF_VALUE) *X509V3_parse_list(const char *line)
     char *linebuf;
     int state;
 
+    if (line == NULL)
+        return NULL;
+
     /* We are going to modify the line so copy it first */
     linebuf = OPENSSL_strdup(line);
     if (linebuf == NULL)
@@ -394,6 +397,9 @@ err:
 static char *strip_spaces(char *name)
 {
     char *p, *q;
+
+    if (name == NULL)
+        return NULL;
 
     /* Skip over leading spaces */
     p = name;
